@@ -1,0 +1,2 @@
+GRANT ALL PRIVILEGES ON *.* TO 'alpaca-app-user'@'%';
+FLUSH PRIVILEGES;
