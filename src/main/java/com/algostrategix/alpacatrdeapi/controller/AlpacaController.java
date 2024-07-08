@@ -1,10 +1,14 @@
 package com.algostrategix.alpacatrdeapi.controller;
 
-import com.algostrategix.alpacatrdeapi.client.AlpacaApiClientService;
+import com.algostrategix.alpacatrdeapi.model.User;
+import com.algostrategix.alpacatrdeapi.service.AlpacaApiClientService;
 import com.algostrategix.alpacatrdeapi.model.AccountInfo;
+import com.algostrategix.alpacatrdeapi.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,15 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1")
 public class AlpacaController {
 
-    private final AlpacaApiClientService apiClient;
+    @Autowired
+    private AlpacaApiClientService alpacaApiClientService;
 
-    @GetMapping("/ping")
-    public ResponseEntity<String> ping() {
-        return ResponseEntity.ok("pong");
-    }
+    @Autowired
+    private AuthenticationService authenticationService;
 
     @GetMapping("/account")
-    public ResponseEntity<AccountInfo> getAccountInfo() {
-        return apiClient.getAccountInfo();
+    public ResponseEntity<AccountInfo> getAccountInfo(@RequestHeader("Authorization") String token) {
+        User user = authenticationService.validateToken(token)
+                .orElseThrow(() -> new RuntimeException("Invalid or expired token"));
+
+        return alpacaApiClientService.getAccountInfo();
     }
 }

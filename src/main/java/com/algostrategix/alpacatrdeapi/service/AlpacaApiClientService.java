@@ -1,4 +1,4 @@
-package com.algostrategix.alpacatrdeapi.client;
+package com.algostrategix.alpacatrdeapi.service;
 
 import com.algostrategix.alpacatrdeapi.config.AlpacaApiConfig;
 import com.algostrategix.alpacatrdeapi.model.AccountInfo;
