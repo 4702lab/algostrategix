@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: alpaca-connector
+
+alpaca:
+  api:
+    key: PKADEEGJNEGXRS20X486
+    secret: A0EdkjEg1Igfttry6fnqgV87A096aglOiSW8Vhmx
+  base:
+    url: https://paper-api.alpaca.markets/v2
