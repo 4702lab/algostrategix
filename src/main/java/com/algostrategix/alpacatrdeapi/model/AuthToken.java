@@ -1,8 +1,8 @@
 package com.algostrategix.alpacatrdeapi.model;
 
 
-import jakarta.persistence.*;
 import lombok.Data;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
