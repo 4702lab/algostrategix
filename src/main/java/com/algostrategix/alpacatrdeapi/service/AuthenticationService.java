@@ -32,6 +32,9 @@ public class AuthenticationService {
     @Autowired
     private EncryptionService encryptionService;
 
+    public AuthenticationService() {
+    }
+
     public User register(String userId, String password, String apiKey, String apiSecret, AccountType accountType, int tokenExpiryDays) {
         String passwordHash = passwordEncoder.encode(password);
         String apiKeyEnc = encryptionService.encrypt(apiKey);

@@ -1,11 +1,11 @@
 package com.algostrategix.alpacatrdeapi.model;
 
 import com.algostrategix.alpacatrdeapi.enums.AccountType;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
